@@ -9,7 +9,6 @@
 #define VERSION_MIN 0
 
 #include "webserver.h"
-
 #include "tempcontroller.h"
 
 Webserver ws;
