@@ -68,8 +68,8 @@ ETHERNETSRCCPP = $(ETHERNET)/Ethernet.cpp $(ETHERNET)/Server.cpp \
 	$(ETHERNET)/Client.cpp
 ETHERNETINC = -I$(ETHERNET) -I$(ETHERNET)/utility
 
-LOCALSRCC = tempcontroller.c debug.c
-LOCALSRCCPP = webserver.cpp
+LOCALSRCC = tempcontroller.c
+LOCALSRCCPP = webserver.cpp debug.cpp
 
 SRC = $(ARDUINO)/pins_arduino.c $(ARDUINO)/wiring.c \
 	$(ARDUINO)/wiring_analog.c $(ARDUINO)/wiring_digital.c \

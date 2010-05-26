@@ -15,7 +15,7 @@ Tempcontroller tc_init(uint8_t sensor_pin, uint8_t cool_pin, uint8_t heat_pin, c
 
 void tc_check_temp(Tempcontroller *tc)
 {
-	DEBUG_PRINT("Checking temp: ");
-	DEBUG_PRINTLN(tc->name);
+	debug_print("Checking temp: ");
+	//DEBUG_PRINTLN(tc->name);
 }
 
