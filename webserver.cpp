@@ -14,7 +14,7 @@ void Webserver::check_request()
 {
 	Client Browser = Myserver.available();
 	if (Browser) {
-//		DEBUG_PRINTLN("Reading from browser.");
+		DEBUG_PRINTLN("Reading from browser.");
 		char in;
 		char path[3];
 		int pos = 0;
@@ -23,20 +23,20 @@ void Webserver::check_request()
 			path[pos++] = in;
 
 			if (is_get(path)) {
-//				DEBUG_PRINTLN("Got 'GET'");
+				DEBUG_PRINTLN("Got 'GET'");
 				// reset (ugly)
 				pos = path[0] = path[1] = path[2] = 0;
 				
 			}
 
-//			DEBUG_PRINT("pos=");
-//			DEBUG_PRINTLN(pos);
+			DEBUG_PRINT("pos=");
+			DEBUG_PRINTLN(pos);
 
 			if (pos > 2) {
-//				DEBUG_PRINTLN("fast forwarding...");
-//				DEBUG_PRINT(path);
+				DEBUG_PRINTLN("fast forwarding...");
+				DEBUG_PRINT(path);
 				if (fast_forward(Browser)) {
-//					DEBUG_PRINTLN("resetting");
+					DEBUG_PRINTLN("resetting");
 					// reset (ugly)
 					pos = path[0] = path[1] = path[2] = 0;
 				}
