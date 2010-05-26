@@ -1,6 +1,8 @@
 #include "tempcontroller.h"
 #include "debug.h"
 
+#include <string.h>
+
 Tempcontroller tc_init(uint8_t sensor_pin, uint8_t cool_pin, uint8_t heat_pin, char *name, uint8_t eeprom_low, uint8_t eeprom_high)
 {
 	Tempcontroller tc;
@@ -15,7 +17,7 @@ Tempcontroller tc_init(uint8_t sensor_pin, uint8_t cool_pin, uint8_t heat_pin, c
 
 void tc_check_temp(Tempcontroller *tc)
 {
-	debug_print("Checking temp: ");
-	//DEBUG_PRINTLN(tc->name);
+	DEBUG_PRINT("Checking temp: ");
+	DEBUG_PRINTLN(tc->name);
 }
 

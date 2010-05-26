@@ -10,9 +10,7 @@
 
 #include "webserver.h"
 
-extern "C" {
-	#include "tempcontroller.h"
-}
+#include "tempcontroller.h"
 
 Webserver ws;
 Tempcontroller tc_kegerator;

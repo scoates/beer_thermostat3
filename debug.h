@@ -1,13 +1,10 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
+#include <HardwareSerial.h>
 
-#ifdef __cplusplus
-	#include <HardwareSerial.h>
-	extern HardwareSerial Serial;
-#endif
-
-extern "C" void debug_print(char *);
+#define DEBUG_PRINT(s) Serial.print(s)
+#define DEBUG_PRINTLN(s) Serial.println(s)
 
 #endif
 // vim: ff=unix filetype=cpp ts=4 noet sw=4
