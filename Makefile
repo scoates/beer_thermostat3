@@ -1,5 +1,6 @@
 # Beer Thermostat Makefile
-# Modifications by scoates
+# Modifications by Sean Coates (http://seancoates.com/)
+#
 # Arduino adaptation by mellis, eighthave, oli.keller,
 # alex norman [with help from http://code.google.com/p/arduino/issues/detail?id=65#c5]
 # Version 0017/Mac modifications made by
@@ -68,19 +69,26 @@ ETHERNETSRCCPP = $(ETHERNET)/Ethernet.cpp $(ETHERNET)/Server.cpp \
 	$(ETHERNET)/Client.cpp
 ETHERNETINC = -I$(ETHERNET) -I$(ETHERNET)/utility
 
+SOFTWARESERIAL = $(INSTALL_DIR)/libraries/SoftwareSerial
+SOFTWARESERIALSRCC =
+SOFTWARESERIALSRCCPP = $(SOFTWARESERIAL)/SoftwareSerial.cpp
+SOFTWARESERIALINC = -I$(SOFTWARESERIAL)
+
 LOCALSRCC = 
-LOCALSRCCPP = webserver.cpp tempcontroller.cpp
+LOCALSRCCPP = webserver.cpp tempcontroller.cpp lcd.cpp
 
 SRC = $(ARDUINO)/pins_arduino.c $(ARDUINO)/wiring.c \
 	$(ARDUINO)/wiring_analog.c $(ARDUINO)/wiring_digital.c \
 	$(ARDUINO)/wiring_pulse.c \
 	$(ARDUINO)/wiring_shift.c $(ARDUINO)/WInterrupts.c \
 	$(LOCALSRCC) \
-	$(ETHERNETSRCC)
+	$(ETHERNETSRCC) \
+	$(SOFTWARESERIALSRCC)
 CXXSRC = $(ARDUINO)/HardwareSerial.cpp $(ARDUINO)/WMath.cpp \
 	$(ARDUINO)/Print.cpp \
 	$(LOCALSRCCPP) \
-	$(ETHERNETSRCCPP)
+	$(ETHERNETSRCCPP) \
+	$(SOFTWARESERIALSRCCPP)
 
 FORMAT = ihex
 
@@ -100,8 +108,8 @@ CDEFS = -DF_CPU=$(BUILD_F_CPU)
 CXXDEFS = -DF_CPU=$(BUILD_F_CPU)
 
 # Place -I options here
-CINCS = -I$(ARDUINO) $(ETHERNETINC)
-CXXINCS = -I$(ARDUINO) $(ETHERNETINC)
+CINCS = -I$(ARDUINO) $(ETHERNETINC) $(SOFTWARESERIALINC)
+CXXINCS = -I$(ARDUINO) $(ETHERNETINC) $(SOFTWARESERIALINC)
 
 
 # Compiler flag to set the C Standard level.

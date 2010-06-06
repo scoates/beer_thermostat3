@@ -10,14 +10,16 @@
 
 #include "webserver.h"
 #include "tempcontroller.h"
+#include "lcd.h"
 
 Webserver ws;
 Tempcontroller tc_kegerator;
 Tempcontroller tc_fermenter;
+Lcd lcd;
 
 /*
- * Webserver
- * Lcd
+ * ok Webserver
+ * ok Lcd
  * Temp Sensor(s)
  * Relay(s)
  * Timer
@@ -25,19 +27,23 @@ Tempcontroller tc_fermenter;
 
 void setup()
 {
+	Serial.begin(9600);
+
+	ws = Webserver();
+
 	/* Keg pins: a5=sensor, d4=cool, no heat */
 	tc_kegerator = tc_init(5, 4, NULL, "KEG", 0x1, 0x2);
 
 	/* Fermenter pins: a4=sensor, d3=cool, d2=heat */
-	tc_kegerator = tc_init(4, 3, 2, "FER", 0x3, 0x4);
+	tc_fermenter = tc_init(4, 3, 2, "FER", 0x3, 0x4);
 
-	ws = Webserver();
-	Serial.begin(9600);
+	/* LCD pin = 5 */
+	lcd = lcd_init(5);
 }
 
 void loop()
 {
-	ws.check_request();
+	// TODO ws.check_request();
 	tc_check_temp(&tc_kegerator);
 
 	delay(1000);

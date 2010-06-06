@@ -2,6 +2,11 @@
 #define TEMPCONTROLLER_H
 
 #include <stdint.h>
+#include "WProgram.h"
+
+// special indicator that we want to measure the bandgap
+// see http://www.ladyada.net/learn/sensors/tmp36.html
+#define BANDGAPREF 14
 
 typedef struct
 {
