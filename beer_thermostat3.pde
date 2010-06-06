@@ -14,7 +14,7 @@
 
 Webserver ws;
 Tempcontroller tc_kegerator;
-Tempcontroller tc_fermenter;
+//Tempcontroller tc_fermenter;
 Lcd lcd;
 
 /*
@@ -35,7 +35,7 @@ void setup()
 	tc_kegerator = tc_init(5, 4, NULL, "KEG", 0x1, 0x2);
 
 	/* Fermenter pins: a4=sensor, d3=cool, d2=heat */
-	tc_fermenter = tc_init(4, 3, 2, "FER", 0x3, 0x4);
+//	tc_fermenter = tc_init(4, 3, 2, "FER", 0x3, 0x4);
 
 	/* LCD pin = 5 */
 	lcd = lcd_init(5);
